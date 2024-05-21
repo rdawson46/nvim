@@ -91,4 +91,6 @@ return require('packer').startup(function(use)
             {'tpope/vim-repeat'}
         }
     }
+
+    use 'tpope/vim-fugitive'
 end)
