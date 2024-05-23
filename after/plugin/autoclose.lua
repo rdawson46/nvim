@@ -6,12 +6,6 @@ require('autoclose').setup({
             pair = "''",
             disable_filetypes = {}
         },
-        ['"'] = {
-            escape = true,
-            close = false,
-            pair = '""',
-            disable_filetypes = {}
-        },
     },
     options = {
         pair_spaces = true,
