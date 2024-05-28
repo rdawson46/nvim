@@ -93,4 +93,7 @@ return require('packer').startup(function(use)
     }
 
     use 'tpope/vim-fugitive'
+
+    use "stevearc/dressing.nvim"
+    use "ziontee113/icon-picker.nvim"
 end)
