@@ -9,6 +9,14 @@ return require('packer').startup(function(use)
     }
 
     use({
+        'catppuccin/nvim',
+        as = 'catppuccin',
+        config = function ()
+            vim.cmd('colorscheme rose-pine')
+        end
+    })
+
+    use({
         'rose-pine/neovim',
         as = 'rose-pine',
         config = function()
@@ -72,6 +80,8 @@ return require('packer').startup(function(use)
     }
 
     use 'folke/todo-comments.nvim'
+
+    use 'windwp/nvim-ts-autotag'
 
     use 'lewis6991/gitsigns.nvim'
 
