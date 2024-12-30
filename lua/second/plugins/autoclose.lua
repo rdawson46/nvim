@@ -3,14 +3,6 @@ return {
 
     config = function()
         require('autoclose').setup({
-            keys = {
-                ["'"] = {
-                    escape = true,
-                    close = false,
-                    pair = "''",
-                    disable_filetypes = {}
-                },
-            },
             options = {
                 pair_spaces = true,
                 disable_command_mode = true,
