@@ -1,6 +1,9 @@
 return {
     "nvim-treesitter/nvim-treesitter",
-    --build = ":TSUpdate",
+    lazy = false,
+    build = ":TSUpdate",
+    branch = "main",
+    --[[
     config = function()
         require('nvim-treesitter.configs').setup({
             ensure_installed = {"lua", "python", "go", "rust"},
@@ -12,4 +15,5 @@ return {
             }
         })
     end,
+    ]]--
 }
