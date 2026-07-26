@@ -21,8 +21,8 @@ return {
                 vim.keymap.set('n', 'K', function() vim.lsp.buf.hover() end, opts)
                 vim.keymap.set('n', '<leader>vws', function() vim.lsp.buf.workspace_symbol() end, opts)
                 vim.keymap.set('n', '<leader>vd', function() vim.diagnostic.open_float() end, opts)
-                vim.keymap.set('n', '[d', function() vim.diagnostic.goto_next() end, opts)
-                vim.keymap.set('n', ']d', function() vim.diagnostic.goto_prev() end, opts)
+                vim.keymap.set('n', '[d', function() vim.diagnostic.jump({ count = 1, float = true }) end, opts)
+                vim.keymap.set('n', ']d', function() vim.diagnostic.jump({ count = -1, float = true }) end, opts)
                 vim.keymap.set('n', '<leader>vca', function() vim.lsp.buf.code_action() end, opts)
                 vim.keymap.set('n', '<leader>vrr', function() vim.lsp.buf.references() end, opts)
                 vim.keymap.set('n', '<leader>vrn', function() vim.lsp.buf.rename() end, opts)
@@ -80,6 +80,31 @@ return {
 
             }),
             -- formatting = lsp_zero.cmp_format(),
+        })
+
+        vim.lsp.config('ocamllsp', {})
+        vim.lsp.enable('ocamllsp')
+        vim.lsp.config('lua_ls', {
+            cmd = { 'lua-language-server' },
+            filetypes = { 'lua' },
+            root_markers = { '.luarc.json', '.luarc.jsonc' },
+            telemetry = { enabled = false },
+            settings = {
+                Lua = {
+                    runtime = {
+                        version = 'LuaJIT',
+                    },
+                    diagnostics = {
+                        -- Get the language server to recognize the `vim` global
+                        globals = { "vim" },
+                    },
+                    workspace = {
+                        -- Make the server aware of Neovim runtime files
+                        library = vim.api.nvim_get_runtime_file("lua", true),
+                    },
+                    signatureHelp = { enabled = true },
+                },
+            },
         })
     end
 }
